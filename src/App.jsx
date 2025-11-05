@@ -1,0 +1,151 @@
+
+import React, { useEffect } from 'react'
+import SignUp from './Auth pages/SignUp'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import RootLayout from './layouts/RootLayouts'
+import Login from './Auth pages/Login'
+import Dashboard from './layouts/DashboaredLayout'
+import DashboardLayout from './layouts/DashboaredLayout'
+import AdminDashboared from './AdminPage/AdminDashbored'
+import AssignShift from './AdminPage/AssignShift'
+import AllShifts from './AdminPage/AllShifts'
+import SettingsPage from './sharedComponents/SettingPage'
+import WorkerDashboardLayout from './layouts/WorkersDashboardLayout'
+import MyShift from './WorkersPage/myShiftPage'
+import ColleaguesShift from './WorkersPage/ColleaquesShifts'
+import ForgotPassword from './Auth pages/forgotPassword'
+import { useDispatch } from 'react-redux'
+import { loggedInUserData } from './redux-store/features/loggedInUserData/loggedInUserThunkData'
+import { PrivateRoute, PublicRoute } from './helpers/routeProtect'
+import ResetPassword from './Auth pages/resetPassword'
+import EditShiftPage from './AdminPage/editShiftPage'
+import AdminHistoryPage from './AdminPage/AdminHistoryPage'
+import NotificationPage from './WorkersPage/NotificationPage'
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: (
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        )
+      },
+
+      {
+        path: 'signup',
+        element:(
+          <PublicRoute>
+             <SignUp />
+          </PublicRoute>
+        )
+      },
+      {
+        path: 'forgot-password',
+        element: (
+          <PublicRoute>
+            <ForgotPassword/>
+          </PublicRoute>
+        )
+      },
+      {
+        path: 'reset-password/:token',
+        element: (
+          <PublicRoute>
+            <ResetPassword/>
+          </PublicRoute>
+        )
+      },
+      {
+        path: "adminDash",
+        element: (
+          <PrivateRoute allowedRoles={["admin"]}>
+            <DashboardLayout />
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <AdminDashboared />
+          },
+          {
+            path: "shift",
+            element: <AssignShift />
+          },
+          {
+            path: "allshifts",
+            element: <AllShifts />
+          },
+          {
+            path: "workersDash",
+            element: <MyShift />
+          },
+          {
+            path: "history",
+            element: <AdminHistoryPage/>
+          },
+          {
+            path: "settings",
+            element: <SettingsPage />
+          },
+          {
+            path: "edit/:shift_id",
+            element: <EditShiftPage />
+          },
+          {
+            path: "myShift",
+            element: <MyShift />
+          }
+        ]
+      },
+
+      {
+        path: "workersDash",
+        element: (
+          <PrivateRoute allowedRoles={["admin", "worker"]}>
+             <WorkerDashboardLayout/>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <MyShift/>
+          },
+          {
+            path: "colshifts",
+            element: <ColleaguesShift/>
+          },
+          {
+            path: "history",
+            element: <ColleaguesShift/>
+          },
+          {
+            path: "setting",
+            element: <SettingsPage/>
+          },
+          {
+            path: "notice",
+            element: <NotificationPage/>
+          }
+        ]
+      }
+    ]
+  }
+])
+
+const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+   const userData = dispatch(loggedInUserData()).unwrap()
+  }, [dispatch])
+  return (
+    <RouterProvider router={router} />
+  )
+}
+
+export default App
