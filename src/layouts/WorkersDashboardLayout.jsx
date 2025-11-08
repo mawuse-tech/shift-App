@@ -36,11 +36,21 @@ const WorkersDashboardLayout = () => {
                     <div>
                         {/* Admin Info */}
                         <div className="p-6 flex flex-col items-center bg-gradient-to-b from-[#e71919] to-[#580404] text-white shadow-md h-48 justify-center">
-                            <img
-                                src={`http://localhost:8000/${user.image}`}
-                                alt={`${capitalize(user.firstName)} ${capitalize(user.lastName)}`}
-                                className="w-16 h-16 rounded-full border-2 border-white object-cover shadow-lg"
-                            />
+                            <div className="w-16 h-16 rounded-full border-2 border-white shadow-lg flex items-center justify-center bg-red-700 text-white font-semibold text-lg">
+                                {user.image ? (
+                                    <img
+                                        src={`http://localhost:8000/${user.image}`}
+                                        alt={`${capitalize(user.firstName)} ${capitalize(user.lastName)}`}
+                                        className="w-16 h-16 rounded-full object-cover"
+                                    />
+                                ) : (
+                                    // Show initials
+                                    <>
+                                        {`${user.firstName?.[0]?.toUpperCase() || ""}${user.lastName?.[0]?.toUpperCase() || ""}`}
+                                    </>
+                                )}
+                            </div>
+
                             <h2 className="text-lg font-semibold mt-3"> {capitalize(user.firstName)} {capitalize(user.lastName)}</h2>
                             <p className="text-sm opacity-90">Staff Member</p>
                             <p className="text-sm opacity-90">{user.phoneNumber}</p>

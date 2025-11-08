@@ -28,7 +28,13 @@ export const PrivateRoute = ({ children, allowedRoles }) => {
 export const PublicRoute = ({ children }) => {
   const { loading, user } = useSelector((store) => store.loggedInUserData);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-[#e71919] to-[#2e0101]">
+        <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (user) {
     // check user role

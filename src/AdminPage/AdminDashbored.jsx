@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   };
 
   const confirmDelete = async () => {
-    
+
     if (!workerToDelete) return;
 
     try {
@@ -93,11 +93,21 @@ const AdminDashboard = () => {
                     className="border-b border-gray-200 hover:bg-red-50 transition-colors duration-200"
                   >
                     <td className="py-4 px-4 flex items-center gap-3">
-                      <img
-                        src={`http://localhost:8000/${worker.image}`}
-                        alt={`${capitalize(worker.firstName)} ${capitalize(worker.lastName)}`}
-                        className="w-10 h-10 rounded-full object-cover border"
-                      />
+                      <div className="w-12 h-12 rounded-full border-2 border-white shadow-lg flex items-center justify-center bg-gray-200 text-gray-600 font-semibold text-lg">
+                        {worker.image ? (
+                          <img
+                            src={`http://localhost:8000/${worker.image}`}
+                            alt={`${capitalize(worker.firstName)} ${capitalize(worker.lastName)}`}
+                            className="w-10 h-10 rounded-full object-cover"
+                          />
+                        ) : (
+                          // Show initials
+                          <>
+                            {`${worker.firstName?.[0]?.toUpperCase() || ""}${worker.lastName?.[0]?.toUpperCase() || ""}`}
+                          </>
+                        )}
+                      </div>
+
                       <div>
                         <p className="font-semibold text-gray-800">
                           {capitalize(worker.firstName)} {capitalize(worker.lastName)}
@@ -137,7 +147,7 @@ const AdminDashboard = () => {
           confirmText="Delete"
         >
           <p>
-            Are you sure you want to remove{" "}
+            Are you sure you want to remove this worker{" "}
             <span className="font-semibold text-red-600">
               {capitalize(workerToDelete.firstName)} {capitalize(workerToDelete.lastName)}
             </span>

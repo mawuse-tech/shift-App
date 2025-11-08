@@ -21,6 +21,9 @@ import ResetPassword from './Auth pages/resetPassword'
 import EditShiftPage from './AdminPage/editShiftPage'
 import AdminHistoryPage from './AdminPage/AdminHistoryPage'
 import NotificationPage from './WorkersPage/NotificationPage'
+import InviteWorker from './AdminPage/InviteWorker'
+import VerifyEmail from './WorkersPage/VerifyEmail'
+import CompleteRegistration from './Auth pages/CompleteRegistration'
 
 
 const router = createBrowserRouter([
@@ -38,10 +41,10 @@ const router = createBrowserRouter([
       },
 
       {
-        path: 'signup',
+        path: 'complete-registration',
         element:(
           <PublicRoute>
-             <SignUp />
+             <CompleteRegistration />
           </PublicRoute>
         )
       },
@@ -62,6 +65,10 @@ const router = createBrowserRouter([
         )
       },
       {
+            path: "verify",
+            element: <VerifyEmail/>
+          },
+      {
         path: "adminDash",
         element: (
           <PrivateRoute allowedRoles={["admin"]}>
@@ -74,16 +81,16 @@ const router = createBrowserRouter([
             element: <AdminDashboared />
           },
           {
+            path: "invite",
+            element: <InviteWorker />
+          },
+          {
             path: "shift",
             element: <AssignShift />
           },
           {
             path: "allshifts",
             element: <AllShifts />
-          },
-          {
-            path: "workersDash",
-            element: <MyShift />
           },
           {
             path: "history",

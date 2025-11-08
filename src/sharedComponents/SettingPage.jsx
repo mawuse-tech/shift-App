@@ -45,7 +45,7 @@ const SettingsPage = () => {
 
     try {
       const response = await api.put('/worker/updateProfile', formData)
-      console.log('.............', response.data)
+     // console.log('.............', response.data)
 
       if (response.data) {
         // console.log(response.data)
@@ -103,7 +103,7 @@ const SettingsPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="text-gray-700 text-sm font-medium">First Name</label>
-              <div className="flex items-center border rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-[#e71919] transition">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-gray-300 transition">
                 <FiUser className="text-gray-500 mr-2" />
                 <input
                   type="text"
@@ -117,7 +117,7 @@ const SettingsPage = () => {
 
             <div>
               <label className="text-gray-700 text-sm font-medium">Last Name</label>
-              <div className="flex items-center border rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-[#e71919] transition">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-gray-300 transition">
                 <FiUser className="text-gray-500 mr-2" />
                 <input
                   type="text"
@@ -134,7 +134,7 @@ const SettingsPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="text-gray-700 text-sm font-medium">Email</label>
-              <div className="flex items-center border rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-[#e71919] transition">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-gray-300 transition">
                 <FiMail className="text-gray-500 mr-2" />
                 <input
                   type="email"
@@ -150,7 +150,7 @@ const SettingsPage = () => {
               <label className="text-gray-700 text-sm font-medium flex items-center">
                 Upload Your Image <span className="text-xs text-gray-400 ml-1">(optional)</span>
               </label>
-              <div className="flex items-center border rounded-lg px-3 py-2 mt-2">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 py-2 mt-2">
                 <FiImage className="text-gray-500 mr-2" />
                 <input
                   type="file"
@@ -170,7 +170,7 @@ const SettingsPage = () => {
           <div className="grid md:grid-cols-1 gap-6">
             <div>
               <label className="text-gray-700 text-sm font-medium">Phone Number</label>
-              <div className="flex items-center border rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-[#e71919] transition">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 py-2 mt-2 focus-within:ring-2 focus-within:ring-gray-300 transition">
                 <FiPhone className="text-gray-500 mr-2" />
                 <input
                   type="tel"

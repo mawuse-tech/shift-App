@@ -54,9 +54,11 @@ const AssignShift = () => {
     return;
   }
 
-  // ✅ Only check if the start day and start date match for the FIRST shift
+  //  Only check if the start day and start date match for the FIRST shift
   if (shifts.length === 0) {
     const chosenDate = new Date(weekStart);
+    
+    //Convert the selected start date into a day name
     const actualDay = chosenDate.toLocaleString("en-US", { weekday: "long" });
 
     if (shift.day !== actualDay) {
@@ -81,7 +83,7 @@ const AssignShift = () => {
     return;
   }
 
-  // ✅ Add shift
+  //  Add shift
   setShifts([...shifts, { ...shift, user_id: Number(worker) }]);
   setShift({ day: "", shift_type: "" });
 };
@@ -99,7 +101,7 @@ const AssignShift = () => {
       return;
     }
 
-    // ✅ Use helper to calculate correct real calendar dates
+    //  Use helper to calculate correct real calendar dates
     const shiftsWithDates = generateShiftDates(shifts, weekStart, worker);
 
     try {
@@ -116,13 +118,13 @@ const AssignShift = () => {
     }
   };
 
-  // ✅ Delete a shift from preview
+  //  Delete a shift from preview
   const handleDeleteShift = (indexToDelete) => {
     setShifts(shifts.filter((_, index) => index !== indexToDelete));
   };
 
   return (
-    <div className="p-4 lg:p-6 bg-white shadow-md rounded-lg">
+    <div className="p-4 lg:py-6 lg:px-20 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-semibold mb-4">Assign Shifts</h1>
 
       {error ? (
@@ -136,7 +138,7 @@ const AssignShift = () => {
             <div>
               <label className="block mb-2 font-medium">Select Worker</label>
               <select
-                className="w-full p-3 rounded border"
+                className="w-full p-3 rounded border border-gray-200"
                 value={worker}
                 onChange={(e) => setWorker(e.target.value)}
               >
@@ -157,7 +159,7 @@ const AssignShift = () => {
                 type="date"
                 value={weekStart}
                 onChange={(e) => setWeekStart(e.target.value)}
-                className="p-3 rounded border w-full"
+                className="p-3 rounded border border-gray-200 w-full"
               />
             </div>
           </div>
@@ -167,7 +169,7 @@ const AssignShift = () => {
             <select
               value={shift.day}
               onChange={(e) => setShift({ ...shift, day: e.target.value })}
-              className="p-3 rounded border"
+              className="p-3 rounded border border-gray-200"
             >
               <option value="">Select Day</option>
               <option>Monday</option>
@@ -182,7 +184,7 @@ const AssignShift = () => {
             <select
               value={shift.shift_type}
               onChange={(e) => setShift({ ...shift, shift_type: e.target.value })}
-              className="p-3 rounded border"
+              className="p-3 rounded border border-gray-200"
             >
               <option value="">Select Shift</option>
               <option>Morning</option>
@@ -197,7 +199,7 @@ const AssignShift = () => {
             disabled={loading}
             className={`w-full py-2 rounded mb-4 ${
               loading
-                ? "bg-gray-400 cursor-not-allowed"
+                ? "bg-red-600 cursor-not-allowed text-white"
                 : "bg-red-600 text-white hover:bg-red-700"
             }`}
           >
@@ -236,7 +238,7 @@ const AssignShift = () => {
               disabled={loading}
               className={`w-full py-2 rounded text-white ${
                 loading
-                  ? "bg-red-500 cursor-not-allowed"
+                  ? "bg-gradient-to-br from-[#e71919] to-[#2e0101] cursor-not-allowed"
                   : "bg-gradient-to-r from-red-600 to-red-900 hover:opacity-90"
               }`}
             >
