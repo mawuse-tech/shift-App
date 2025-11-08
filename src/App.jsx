@@ -21,7 +21,7 @@ import NotificationPage from './WorkersPage/NotificationPage'
 import InviteWorker from './AdminPage/InviteWorker'
 import VerifyEmail from './WorkersPage/VerifyEmail'
 import CompleteRegistration from './authpages/CompleteRegistration'
-import ForgotPassword from './authpages/forgotPassword'
+import forgotPassword from './authpages/forgotPassword'
 
 
 const router = createBrowserRouter([
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         path: 'forgot-password',
         element: (
           <PublicRoute>
-            <ForgotPassword/>
+            <forgotPassword/>
           </PublicRoute>
         )
       },
