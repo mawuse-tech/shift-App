@@ -20,7 +20,6 @@ const Modal = ({ title, children, onClose, onConfirm, confirmText = "Confirm", s
                     >
                         Close
                     </button>
-
                     {showConfirm && (
                         <button
                             onClick={onConfirm}
