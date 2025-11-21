@@ -51,7 +51,7 @@ const MyShifts = () => {
   const visibleWeeks = showAll ? weeklyShifts : weeklyShifts.slice(0, 1);
 
   return (
-    <div className="p-4 bg-white shadow-md rounded-lg">
+    <div className="p-4 bg-white shadow-md rounded-lg min-h-screen">
       <h2 className="text-xl font-semibold mb-4 text-gray-800">
         My Shift Schedule
       </h2>

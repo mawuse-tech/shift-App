@@ -52,7 +52,7 @@ const AdminHistoryPage = () => {
   const visibleWeeks = showAll ? weeklyShifts : weeklyShifts.slice(0, 1);
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
+    <div className="p-6 bg-white rounded-lg shadow-md min-h-screen">
       <h1 className="text-xl font-bold mb-6 text-gray-800">
         Worker Shift History
       </h1>

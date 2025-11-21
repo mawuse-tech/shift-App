@@ -124,7 +124,7 @@ const AssignShift = () => {
   };
 
   return (
-    <div className="p-4 lg:py-6 lg:px-20 bg-white shadow-md rounded-lg">
+    <div className="p-4 lg:py-6 lg:px-20 bg-white shadow-md rounded-lg min-h-screen">
       <h1 className="text-2xl font-semibold mb-4">Assign Shifts</h1>
 
       {error ? (

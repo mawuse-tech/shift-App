@@ -69,7 +69,7 @@ const AllShifts = () => {
   };
 
   return (
-    <div className="lg:p-6">
+    <div className="lg:p-6 min-h-screen">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">
         All Assigned Shifts
       </h2>

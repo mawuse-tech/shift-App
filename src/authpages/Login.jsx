@@ -20,7 +20,6 @@ const Login = () => {
       const response = await dispatch(loginUser({ email, password })).unwrap();
       toast.success(response.message || "Logged in successfully!");
       dispatch(loggedInUserData());
-      alert("Cookie check: " + document.cookie);
 
       if (response.role === "admin") navigate("/adminDash");
       else navigate("/workersDash");
